@@ -7,19 +7,21 @@ import sys
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
-class LandingPage(QDialog):
-    def __init__(self, parent = None):
-        super().__init__(parent)
-        loadUi('pyQT6_UI/landingPage.ui', self)
+class LandingPage(QDialog, LandingPageUI):
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+        self.pushButton.clicked.connect(self.sayHi)
 
-    def sayHi(self) -> str:
-        return "Hi"
+
+    def sayHi(self) -> None:
+        print('Hi')
 
 def main() -> None:
     app = QtWidgets.QApplication(sys.argv)
 
-    window = LandingPage()
-    window.show()
+    stackedWidget = LandingPage()
+    stackedWidget.show()
     app.exec()
 
 
