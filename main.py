@@ -17,7 +17,7 @@ class LandingPage(QDialog, LandingPageUI):
     @staticmethod
     @Utils.timefunction
     def sayHi() -> None:
-        print('Hi  ')
+        print('This branch is for making changes to the UI.')
 
     def openFileDir(self) -> str:
         fileDir = QFileDialog.getOpenFileName(self, "Open file", "", "")
