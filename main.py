@@ -1,16 +1,46 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+from pyQT6_UI.landingPage import Ui_Dialog as LandingPageUI
+from PyQt6 import QtWidgets
+from PyQt6.QtWidgets import QWidget, QFileDialog, QDialog
+import subprocess
+import sys
+from Organiser.Setup import Utils
 
 
-# Press the green button in the gutter to run the script.
+class LandingPage(QDialog, LandingPageUI):
+    def __init__(self) -> None:
+        super().__init__()
+        self.fileDir = None
+        self.setupUi(self)
+        self.pushButton.clicked.connect(self.openFileDir)
+        self.pushButton_2.clicked.connect(self.sayHi)
+
+    @staticmethod
+    @Utils.timefunction
+    def sayHi() -> None:
+        print('Hi  ')
+
+    def openFileDir(self) -> str:
+        fileDir = QFileDialog.getOpenFileName(self, "Open file", "", "")
+        print(fileDir[0])
+        self.fileDir:str = fileDir[0]
+        self.displayOpenedPDF()
+        return str(fileDir[0])
+
+    def displayOpenedPDF(self)->None:
+        try:
+            subprocess.Popen(self.fileDir, shell = True)
+        except subprocess.SubprocessError as e:
+            raise e
+
+
+def main() -> None:
+    app = QtWidgets.QApplication(sys.argv)
+
+    stackedWidget = LandingPage()
+    stackedWidget.show()
+    app.exec()
+
+
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    main()
