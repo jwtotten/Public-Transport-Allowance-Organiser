@@ -3,7 +3,6 @@ from PyQt6 import QtWidgets
 from PyQt6.QtWidgets import QWidget, QFileDialog, QDialog
 import subprocess
 import sys
-from Organiser.Setup import Utils
 
 
 class LandingPage(QDialog, LandingPageUI):
@@ -15,7 +14,7 @@ class LandingPage(QDialog, LandingPageUI):
         self.pushButton_2.clicked.connect(self.sayHi)
 
     @staticmethod
-    @Utils.timefunction
+    # @Utils.timefunction
     def sayHi() -> None:
         print('This branch is for making changes to the UI.')
 
