@@ -6,7 +6,6 @@ def main():
     tesseract_path: str = "C:\Program Files\Tesseract"
     tesseract = Tesseract_Controller(tesseract_path)
 
-    #todo: add tesseract to the PATH
     try:
         tesseract.add_tesseract_to_path()
     except SystemError:

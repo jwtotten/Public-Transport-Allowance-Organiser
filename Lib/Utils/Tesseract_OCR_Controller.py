@@ -1,5 +1,6 @@
 import sys
 from pathlib import Path
+import pytesseract
 
 
 class Tesseract_Controller:
