@@ -1,19 +1,14 @@
 import sys
-from pathlib import Path
-
+from Lib.Utils.Tesseract_OCR_Controller import Tesseract_Controller
 
 def main():
 
     tesseract_path: str = "C:\Program Files\Tesseract"
+    tesseract = Tesseract_Controller(tesseract_path)
 
     #todo: add tesseract to the PATH
     try:
-        sys.path.append(str(Path(tesseract_path)))
-        if tesseract_path in sys.path:
-            print(f"Tesseract OCR directory has been successfully added to the PATH:"
-                  f"\n{tesseract_path}")
-        else:
-            raise SystemError
+        tesseract.add_tesseract_to_path()
     except SystemError:
         print("Failed to add Tesseract OCR to the system path.")
         sys.exit()
