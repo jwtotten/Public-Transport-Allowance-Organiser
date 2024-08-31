@@ -24,12 +24,12 @@ class Tesseract_Controller:
             raise SystemError
 
         # adding tesseract directory to the system environment variables using os
-        os.environ["TESSDATA_PREFIX"] = self.tesseract_path_dir
+        os.environ["TESSDATA_PREFIX"] = self.tesseract_path_dir + os.sep + "tessdata"
 
         pytesseract.pytesseract.tesseract_cmd = self.tesseract_path_dir
 
     @staticmethod
-    def perform_ocr(image:Image) -> str:
+    def perform_ocr(image: Image) -> str:
         """
         Takes an PIL image object and performs the OCR with Tesseract.
         :param image: Image, PIL Image object that is to be passed to Tesseract.
