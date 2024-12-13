@@ -1,3 +1,5 @@
 .idea
 # This is a dummy PDF that is being used for testing basic functionality.
 /dummyPDF.pdf
+/idea
+.venv
